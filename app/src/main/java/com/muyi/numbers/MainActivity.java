@@ -3,7 +3,12 @@ package com.muyi.numbers;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import com.muyi.numbers.entity.District;
+
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.CountListener;
 
 public class MainActivity extends BaseActivity {
 
@@ -16,16 +21,18 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(mToolbarTb);
         Bmob.initialize(this, "01d88fc32ae11655cd0f1df65ce46fde");
 
-//        BmobQuery<Person> bmobQuery = new BmobQuery<Person>();
-//        bmobQuery.getObject("6b6c11c537", new >QueryListener<Person>() {
-//            @Override
-//            public void done(Person object,BmobException e) {
-//                if(e==null){
-//                    toast("查询成功");
-//                }else{
-//                    toast("查询失败：" + e.getMessage());
-//                }
-//            }
-//        });
+        BmobQuery<District> query = new BmobQuery<District>();
+        query.count(District.class, new CountListener() {
+            @Override
+            public void done(Integer count, BmobException e) {
+                if (e == null) {
+                    showToast("count对象个数为：" + count);
+                } else {
+                    showToast("失败：" + e.getMessage() + "," + e.getErrorCode());
+                }
+            }
+        });
     }
+
+
 }

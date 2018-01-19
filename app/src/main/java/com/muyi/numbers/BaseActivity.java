@@ -1,6 +1,7 @@
 package com.muyi.numbers;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -12,6 +13,8 @@ import com.jaeger.library.StatusBarUtil;
  */
 
 public class BaseActivity extends AppCompatActivity {
+
+    public Context mContext = this;
 
 
     /**

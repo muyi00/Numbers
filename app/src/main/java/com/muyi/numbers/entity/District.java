@@ -40,10 +40,6 @@ public class District extends BmobObject {
      */
     private String pinyin;
     /**
-     * 组合描述名称
-     */
-    private String mergerName;
-    /**
      * 区号
      */
     private String cityCode;
@@ -61,11 +57,10 @@ public class District extends BmobObject {
      */
     private String lat;
 
-    @Generated(hash = 1705777344)
+    @Generated(hash = 1405435303)
     public District(Long id, String adminCode, String parentAdminCode,
             String levelType, String name, String shortName, String pinyin,
-            String mergerName, String cityCode, String zipCode, String lng,
-            String lat) {
+            String cityCode, String zipCode, String lng, String lat) {
         this.id = id;
         this.adminCode = adminCode;
         this.parentAdminCode = parentAdminCode;
@@ -73,7 +68,6 @@ public class District extends BmobObject {
         this.name = name;
         this.shortName = shortName;
         this.pinyin = pinyin;
-        this.mergerName = mergerName;
         this.cityCode = cityCode;
         this.zipCode = zipCode;
         this.lng = lng;
@@ -140,14 +134,6 @@ public class District extends BmobObject {
         this.pinyin = pinyin;
     }
 
-    public String getMergerName() {
-        return this.mergerName;
-    }
-
-    public void setMergerName(String mergerName) {
-        this.mergerName = mergerName;
-    }
-
     public String getCityCode() {
         return this.cityCode;
     }
@@ -179,5 +165,6 @@ public class District extends BmobObject {
     public void setLat(String lat) {
         this.lat = lat;
     }
+
 
 }

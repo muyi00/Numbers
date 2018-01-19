@@ -31,11 +31,10 @@ public class DistrictDao extends AbstractDao<District, Long> {
         public final static Property Name = new Property(4, String.class, "name", false, "NAME");
         public final static Property ShortName = new Property(5, String.class, "shortName", false, "SHORT_NAME");
         public final static Property Pinyin = new Property(6, String.class, "pinyin", false, "PINYIN");
-        public final static Property MergerName = new Property(7, String.class, "mergerName", false, "MERGER_NAME");
-        public final static Property CityCode = new Property(8, String.class, "cityCode", false, "CITY_CODE");
-        public final static Property ZipCode = new Property(9, String.class, "zipCode", false, "ZIP_CODE");
-        public final static Property Lng = new Property(10, String.class, "lng", false, "LNG");
-        public final static Property Lat = new Property(11, String.class, "lat", false, "LAT");
+        public final static Property CityCode = new Property(7, String.class, "cityCode", false, "CITY_CODE");
+        public final static Property ZipCode = new Property(8, String.class, "zipCode", false, "ZIP_CODE");
+        public final static Property Lng = new Property(9, String.class, "lng", false, "LNG");
+        public final static Property Lat = new Property(10, String.class, "lat", false, "LAT");
     }
 
 
@@ -58,11 +57,10 @@ public class DistrictDao extends AbstractDao<District, Long> {
                 "\"NAME\" TEXT," + // 4: name
                 "\"SHORT_NAME\" TEXT," + // 5: shortName
                 "\"PINYIN\" TEXT," + // 6: pinyin
-                "\"MERGER_NAME\" TEXT," + // 7: mergerName
-                "\"CITY_CODE\" TEXT," + // 8: cityCode
-                "\"ZIP_CODE\" TEXT," + // 9: zipCode
-                "\"LNG\" TEXT," + // 10: lng
-                "\"LAT\" TEXT);"); // 11: lat
+                "\"CITY_CODE\" TEXT," + // 7: cityCode
+                "\"ZIP_CODE\" TEXT," + // 8: zipCode
+                "\"LNG\" TEXT," + // 9: lng
+                "\"LAT\" TEXT);"); // 10: lat
     }
 
     /** Drops the underlying database table. */
@@ -110,29 +108,24 @@ public class DistrictDao extends AbstractDao<District, Long> {
             stmt.bindString(7, pinyin);
         }
  
-        String mergerName = entity.getMergerName();
-        if (mergerName != null) {
-            stmt.bindString(8, mergerName);
-        }
- 
         String cityCode = entity.getCityCode();
         if (cityCode != null) {
-            stmt.bindString(9, cityCode);
+            stmt.bindString(8, cityCode);
         }
  
         String zipCode = entity.getZipCode();
         if (zipCode != null) {
-            stmt.bindString(10, zipCode);
+            stmt.bindString(9, zipCode);
         }
  
         String lng = entity.getLng();
         if (lng != null) {
-            stmt.bindString(11, lng);
+            stmt.bindString(10, lng);
         }
  
         String lat = entity.getLat();
         if (lat != null) {
-            stmt.bindString(12, lat);
+            stmt.bindString(11, lat);
         }
     }
 
@@ -175,29 +168,24 @@ public class DistrictDao extends AbstractDao<District, Long> {
             stmt.bindString(7, pinyin);
         }
  
-        String mergerName = entity.getMergerName();
-        if (mergerName != null) {
-            stmt.bindString(8, mergerName);
-        }
- 
         String cityCode = entity.getCityCode();
         if (cityCode != null) {
-            stmt.bindString(9, cityCode);
+            stmt.bindString(8, cityCode);
         }
  
         String zipCode = entity.getZipCode();
         if (zipCode != null) {
-            stmt.bindString(10, zipCode);
+            stmt.bindString(9, zipCode);
         }
  
         String lng = entity.getLng();
         if (lng != null) {
-            stmt.bindString(11, lng);
+            stmt.bindString(10, lng);
         }
  
         String lat = entity.getLat();
         if (lat != null) {
-            stmt.bindString(12, lat);
+            stmt.bindString(11, lat);
         }
     }
 
@@ -216,11 +204,10 @@ public class DistrictDao extends AbstractDao<District, Long> {
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // name
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // shortName
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // pinyin
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // mergerName
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // cityCode
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // zipCode
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // lng
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11) // lat
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // cityCode
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // zipCode
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // lng
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // lat
         );
         return entity;
     }
@@ -234,11 +221,10 @@ public class DistrictDao extends AbstractDao<District, Long> {
         entity.setName(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setShortName(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setPinyin(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setMergerName(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setCityCode(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setZipCode(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setLng(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
-        entity.setLat(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setCityCode(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setZipCode(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setLng(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setLat(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
      }
     
     @Override

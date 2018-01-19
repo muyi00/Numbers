@@ -1,40 +1,67 @@
 package com.muyi.numbers.utils;
 
-import android.content.Context;
-
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by YJ on 2018/1/18.
  */
 
 public class Util {
+
     /**
-     * 读取assets下的txt文件，返回utf-8 String
+     * 生成不重复的随机数
      *
-     * @param context
-     * @param fileName 不包括后缀
+     * @param lowLimit   下限
+     * @param upperLimit 上限
+     * @param count      数量
      * @return
      */
-    public static String readAssetsTxt(Context context, String fileName) {
-        try {
-            //Return an AssetManager instance for your application's package
-            InputStream is = context.getAssets().open(fileName + ".txt");
-            int size = is.available();
-            // Read the entire asset into a local byte buffer.
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            // Convert the buffer into a string.
-            String text = new String(buffer, "utf-8");
-            // Finally stick the string into the text view.
-            return text;
-        } catch (IOException e) {
-            // Should never happen!
-//            throw new RuntimeException(e);
-            e.printStackTrace();
+    public static List<Integer> getRandomNumber(int lowLimit, int upperLimit, int count) {
+        upperLimit++;//上限闭合
+        HashSet<Integer> integerHashSet = new HashSet<>();
+        boolean isRun = true;
+        do {
+            int randomInt = getRandomNumber(lowLimit, upperLimit);
+            if (!integerHashSet.contains(randomInt)) {
+                integerHashSet.add(randomInt);
+            }
+            if (integerHashSet.size() == count) {
+                isRun = false;
+            }
+        } while (isRun);
+
+        List<Integer> numberList = new ArrayList<>();
+
+        for (Integer i : integerHashSet) {
+            if (i != null) {
+                numberList.add(i);
+            }
         }
-        return "读取错误，请检查文件名";
+        return numberList;
     }
+
+    /**
+     * 生成指定范围的随机数
+     *
+     * @param lowLimit
+     * @param upperLimit
+     * @return
+     */
+    public static int getRandomNumber(int lowLimit, int upperLimit) {
+        Random random = new Random();
+        int randomInt;
+        boolean isRun = true;
+        do {
+            randomInt = random.nextInt(upperLimit);//生成0~10000之间的随机数
+            if (randomInt > lowLimit) {
+                isRun = false;
+            }
+        } while (isRun);
+        return randomInt;
+    }
+
+
 }
